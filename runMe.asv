@@ -1,0 +1,26 @@
+clear all
+clc
+
+%First load sample
+load naca.mat
+
+%Generate the mesh
+input = make_input(xy,bound_data);
+[mesh] = mesh_gen( input , bound_data, 0.8, psource);
+
+%Save the mesh
+save_mesh(mesh,'mesh.dat',bound_data);
+%%
+
+%Run preprocessor
+system('PrePro.exe < runPrePro.inp');
+%%
+
+
+%Run solver
+system('Solver.exe < runSolver.inp');
+%%
+
+
+%Import all the data
+[results, residual,mesh] = import_FLITE_data('solverout.rsd','solverout.res',mesh);
