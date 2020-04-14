@@ -32,7 +32,7 @@ ylabel('Force coefficient (Force/q)')
 figure
 colormap(jet)
 trisurf(mesh.connec(:,1:3),mesh.xy(:,1),mesh.xy(:,2),results(:,2),'linestyle','none')
-title('Normalised Density (rho/rho_inf)');
+title('Normalised Density (rho/rho_{inf})');
 colorbar
 shading interp;
 daspect([1 1 1])
@@ -45,7 +45,7 @@ T_star=gamma*(results(:,5)-(results(:,3).^2+results(:,4).^2));
 p_star=((gamma-1)/gamma)*results(:,2).*T_star;
 p_norm=2.0*p_star;
 trisurf(mesh.connec(:,1:3),mesh.xy(:,1),mesh.xy(:,2),p_norm,'linestyle','none')
-title('Normalised Pressure (p/q_inf)');
+title('Normalised Pressure (p/q_{inf})');
 colorbar
 shading interp;
 daspect([1 1 1])
